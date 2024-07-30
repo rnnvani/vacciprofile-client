@@ -1,0 +1,40 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+$primary: rgb(58, 109, 109);
+$secondary: rgb(27, 66, 55);
+$tertiary: rgb(184, 183, 175);
+$light: rgb(224, 228, 227);
+$info: rgb(185, 194, 191);
+$warning: rgb(35, 116, 93);
+$success: rgb(84, 128, 115);
+$danger:rgb(167, 57, 57);
+$table: rgb(224, 233, 231);
+$dark: #3e3f3e;
+$darker: rgb(141, 145, 144);
+$selectable: rgb(31, 49, 185);
+$selected: rgb(13, 19, 147);
+$pale: rgb(102, 141, 141);
+$hover: rgb(123, 119, 6);
+$unselectable: rgb(173, 184, 181);
+
+$theme-colors: (
+  "primary": $primary, 
+  "secondary": $secondary, 
+  "tertiary": $tertiary, 
+  "success": $success,
+  "danger": $danger,
+  "warning": $warning,
+  "info": $info,
+  "dark": $dark,
+  "light": $light,
+  "darker": $darker,
+  "selected": $selected,
+  "pale": $pale,
+  "hover": $hover,
+  "unselectable": $unselectable,
+  "table": $table,
+  "selectable": $selectable
+);
+
+@import '~bootstrap/scss/bootstrap.scss';

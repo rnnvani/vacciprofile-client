@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/information/ManufacturerInformation.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Accreditation.html">Accreditation</a></li><li></li><li><a href="Header.html">Header</a></li><li></li><li><a href="Main.html">Main</a></li><li></li><li><a href="Manufacturer.html">Manufacturer</a></li><li></li><li></li><li></li><li><a href="Navigation.html">Navigation</a></li><li></li><li><a href="Sidebar.html">Sidebar</a></li><li></li><li><a href="Vaccine.html">Vaccine</a></li><li></li><li><a href="Virus.html">Virus</a></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/information/ManufacturerInformation.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+
+/**
+ * ManufacturerInformation Component
+ *
+ * @component
+ * @namespace Manufacturer
+ * @param {Object} props - The component accepts selectedManufacturer and convertCamelCaseToReadable as props.
+ * @param {Object} props.selectedManufacturer - The manufacturer information object.
+ * @param {string} props.selectedManufacturer.name - The name of the manufacturer.
+ * @param {string} props.selectedManufacturer.description - The description of the manufacturer.
+ * @param {Object} props.selectedManufacturer.information - Additional information about the manufacturer.
+ * @param {Object[]} props.selectedManufacturer.information.sources - List of sources related to the manufacturer.
+ * @param {Function} props.convertCamelCaseToReadable - Function that converts camel case strings to a readable format.
+ * @returns {JSX.Element} The Manufacturer Information component.
+ *
+ * @example
+ * // Render the ManufacturerInformation component with dummy data and function
+ * &lt;ManufacturerInformation 
+ *   selectedManufacturer={{
+ *     name: 'Manufacturer X',
+ *     description: 'A leading manufacturer in the industry.',
+ *     information: {
+ *       type: 'Biotechnology',
+ *       country: 'USA',
+ *       sources: [
+ *         { title: 'Source 1', link: 'http://source1.com', lastUpdated: '2024-01-01' },
+ *         { title: 'Source 2', link: 'http://source2.com', lastUpdated: '2024-02-01' }
+ *       ]
+ *     }
+ *   }}
+ *   convertCamelCaseToReadable={key => key.replace(/([A-Z])/g, ' $1').toLowerCase()}
+ * />
+ */
+
+const ManufacturerInformation = ({ 
+    selectedManufacturer, 
+    convertCamelCaseToReadable
+}) => {
+    return &lt;div className=''>
+    &lt;h4 className='report-heading'>{selectedManufacturer.name}&lt;/h4> 
+    &lt;p>{selectedManufacturer.description}&lt;/p>
+    {selectedManufacturer.information ? &lt;>&lt;div className='table-responsive'>
+        &lt;table className='table table-light w-100 m-0'>
+            &lt;thead>
+                &lt;tr>
+                    &lt;th className='text-center' colSpan={2}>Information&lt;/th>
+                &lt;/tr>
+            &lt;/thead>
+            &lt;tbody>
+                {Object.entries(selectedManufacturer.information).map(([attributeKey, attributeValue], index) => {
+                    return attributeKey !== "sources" &amp;&amp; attributeKey !== "lastUpdated" ? &lt;tr key={index}>
+                        &lt;td className='text-center text-capitalize' style={{ width: '50%' }}>{convertCamelCaseToReadable(attributeKey)}&lt;/td>
+                        &lt;td className='text-center'>{attributeValue}&lt;/td>
+                    &lt;/tr> : &lt;>&lt;/> ;
+                })}
+            &lt;/tbody>
+        &lt;/table>
+    &lt;/div>
+    &lt;span className='sources-list'>Source(s): {selectedManufacturer.information.sources.map((source, index)=>&lt;span key={index}>
+        &lt;a className='manufacturer-table-source' href={`${source.link}`} target="_blank" rel="noopener noreferrer">{source.title}&lt;/a>
+        &lt;span> ({source.lastUpdated}){selectedManufacturer.information.sources.length>1 &amp;&amp; index&lt;selectedManufacturer.information.sources.length-1 ? ', ' : ''}&lt;/span>&lt;/span>)}
+    &lt;/span>&lt;/> : &lt;>&lt;/>}
+&lt;/div>
+}
+
+export default ManufacturerInformation;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a> on Mon Jul 29 2024 11:47:44 GMT+0800 (Singapore Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

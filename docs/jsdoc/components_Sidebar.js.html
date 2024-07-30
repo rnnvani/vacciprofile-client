@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/Sidebar.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Accreditation.html">Accreditation</a></li><li></li><li><a href="Header.html">Header</a></li><li></li><li><a href="Main.html">Main</a></li><li></li><li><a href="Manufacturer.html">Manufacturer</a></li><li></li><li></li><li></li><li><a href="Navigation.html">Navigation</a></li><li></li><li><a href="Sidebar.html">Sidebar</a></li><li></li><li><a href="Vaccine.html">Vaccine</a></li><li></li><li><a href="Virus.html">Virus</a></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/Sidebar.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+
+/**
+ * Sidebar Component
+ *
+ * @component
+ * @namespace Sidebar
+ * @param {Object} props - The component accepts various props to handle sidebar functionality.
+ * @param {Function} props.setDetailsType - Function to set the type of details to be displayed ('Virus', 'Vaccine', 'Manufacturer', 'Accreditation').
+ * @param {Array} props.manufacturersList - List of manufacturers available for selection.
+ * @param {Object} props.selectedManufacturer - The currently selected manufacturer.
+ * @param {Function} props.setSelectedManufacturer - Function to update the selected manufacturer.
+ * @param {Function} props.handleSelectManufacturer - Function to handle the selection of a manufacturer.
+ * @param {Function} props.handleSearch - Function to handle the search input changes.
+ * @param {Function} props.setChangedFrom - Function to set the source of the change triggering the view update.
+ * @returns {JSX.Element} The Sidebar component for selecting manufacturers and searching.
+ *
+ * @example
+ * // Example usage of Sidebar component
+ * &lt;Sidebar 
+ *    setDetailsType={(type) => console.log(type)}
+ *    manufacturersList={[{ name: 'ManufacturerA' }, { name: 'ManufacturerB' }]}
+ *    selectedManufacturer={{ name: 'ManufacturerA' }}
+ *    setSelectedManufacturer={(manufacturer) => console.log(manufacturer)}
+ *    handleSelectManufacturer={(manufacturer) => console.log(manufacturer)}
+ *    handleSearch={(query) => console.log(query)}
+ *    setChangedFrom={(source) => console.log(source)}
+ * />
+ */
+
+const Sidebar = ({ 
+    setDetailsType,
+    manufacturersList,  
+    selectedManufacturer,
+    setSelectedManufacturer, 
+    handleSelectManufacturer, 
+    handleSearch,
+    setChangedFrom
+}) => {
+    
+    const handleChangeManufacturer = manufacturer => {
+        if(manufacturer!==selectedManufacturer) {
+            setChangedFrom('Sidebar');
+            setTimeout(() => {
+                handleSelectManufacturer(manufacturer);
+                setDetailsType("Manufacturer");
+                setChangedFrom('');
+            }, 0);
+        } else {
+            setSelectedManufacturer({});
+        }
+    }
+
+    return &lt;div className='sidebar col-6 col-sm-4 col-lg-3 pe-3 slide-right'>
+        &lt;div className='search-container'>
+            &lt;span className="position-relative">
+                &lt;input type="text" className="text-center bg-info rounded-2 border-dark border-0 w-100" id="search" name="search" placeholder="Search" onChange={e => handleSearch(e.target.value)}/>
+                &lt;i className="fa fa-search position-absolute top-50 translate-middle-y end-0 me-2 text-muted" aria-hidden="true">&lt;/i>
+            &lt;/span>
+        &lt;/div>
+        &lt;div className='Manufacturer-list mt-3'>
+            {manufacturersList.map((manufacturer, i) => (
+                &lt;div key={i} className={`sidebar-item bg-light text-dark rounded-3 py-1 mt-2 ${selectedManufacturer === manufacturer ? 'active' : 'inactive'}`} onClick={() =>handleChangeManufacturer(manufacturer)}>{manufacturer.name}&lt;/div>
+            ))}
+        &lt;/div>
+    &lt;/div>
+}
+
+export default Sidebar;</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.3</a> on Mon Jul 29 2024 11:47:44 GMT+0800 (Singapore Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
